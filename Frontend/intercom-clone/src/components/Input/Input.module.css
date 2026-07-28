@@ -1,0 +1,44 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.875rem 0.95rem;
+  color: #1f2937;
+  background: #ffffff;
+  outline: none;
+}
+
+.input:focus {
+  border-color: #2563eb;
+}
+
+.inputError {
+  border-color: #dc2626;
+}
+
+.error,
+.errorSpacer {
+  margin: 0;
+  min-height: 1.1rem;
+  font-size: 0.875rem;
+}
+
+.error {
+  color: #dc2626;
+}
+
+.errorSpacer {
+  visibility: hidden;
+}

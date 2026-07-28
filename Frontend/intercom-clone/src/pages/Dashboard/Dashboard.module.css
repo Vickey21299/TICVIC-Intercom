@@ -1,0 +1,19 @@
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: #f5f7fa;
+}
+
+.card {
+  width: min(100%, 560px);
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  color: #1f2937;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+}
