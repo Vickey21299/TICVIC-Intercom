@@ -1,0 +1,42 @@
+.card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 1.15rem 1.2rem;
+  background:
+    linear-gradient(180deg, rgba(37, 99, 235, 0.05), rgba(37, 99, 235, 0)),
+    #ffffff;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
+}
+
+.title {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.value {
+  margin: 0.55rem 0 0;
+  color: #111827;
+  font-size: clamp(1.8rem, 2vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.subtitle {
+  margin: 0.35rem 0 0;
+  color: #2563eb;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
