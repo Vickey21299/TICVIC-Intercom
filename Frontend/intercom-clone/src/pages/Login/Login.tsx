@@ -5,7 +5,8 @@ import { Card } from '../../components/Card/Card'
 import { Input } from '../../components/Input/Input'
 import { AuthLayout } from '../../layouts/AuthLayout/AuthLayout'
 import type { FieldErrors, LoginFormValues } from '../../types/auth'
-import { isValidCredentials } from '../../utils/auth'
+import { api } from '../../services/api'
+import { authSession } from '../../utils/authSession'
 import styles from './Login.module.css'
 
 const initialValues: LoginFormValues = {
@@ -18,12 +19,13 @@ export function LoginPage() {
   const [values, setValues] = useState<LoginFormValues>(initialValues)
   const [errors, setErrors] = useState<FieldErrors>({})
   const [authError, setAuthError] = useState('')
+  const [submitting, setSubmitting] = useState(false)
 
   const emailError = errors.email
   const passwordError = errors.password
 
   const isLoginDisabled =
-    values.email.trim() === '' || values.password.trim() === ''
+    values.email.trim() === '' || values.password.trim() === '' || submitting
 
   const handleChange =
     (field: keyof LoginFormValues) => (event: ChangeEvent<HTMLInputElement>) => {
@@ -50,7 +52,7 @@ export function LoginPage() {
     }))
   }
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     const nextErrors: FieldErrors = {
@@ -64,12 +66,26 @@ export function LoginPage() {
       return
     }
 
-    if (isValidCredentials(values)) {
-      navigate('/admin/dashboard')
-      return
-    }
+    setSubmitting(true)
+    setAuthError('')
 
-    setAuthError('Invalid email or password.')
+    try {
+      const res = await api.login(values)
+      if (res.success && res.user) {
+        authSession.saveUser(res.user)
+        if (res.user.role === 'admin') {
+          navigate('/admin/dashboard')
+        } else {
+          navigate('/agent/dashboard')
+        }
+      } else {
+        setAuthError(res.message || 'Login failed.')
+      }
+    } catch (err: any) {
+      setAuthError(err.message || 'Failed to authenticate.')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -86,7 +102,7 @@ export function LoginPage() {
         <form className={styles.form} onSubmit={handleSubmit} noValidate>
           <Input
             label="Email"
-            placeholder="admin@test.com"
+            placeholder="admin@acme.com"
             type="email"
             value={values.email}
             onChange={handleChange('email')}

@@ -1,10 +1,10 @@
-import { PageHeader } from '../../../components/PageHeader/PageHeader'
+import { InboxLayout } from '../../../components/Inbox/InboxLayout';
+import { authSession } from '../../../utils/authSession';
 
 export function AgentInboxPage() {
-  return (
-    <PageHeader
-      title="Inbox"
-      description="My Customer Conversations"
-    />
-  )
+  const user = authSession.getUser();
+  const userId = user?.id || 'agent_01';
+  const userName = user?.name || 'Alice Johnson';
+
+  return <InboxLayout userId={userId} userName={userName} />;
 }

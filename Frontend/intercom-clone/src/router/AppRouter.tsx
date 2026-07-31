@@ -14,6 +14,7 @@ import { AgentDashboardPage } from '../pages/agent/Dashboard/Dashboard'
 import { AgentInboxPage } from '../pages/agent/Inbox/Inbox'
 import { AgentProfilePage } from '../pages/agent/Profile/Profile'
 import { LoginPage } from '../pages/Login/Login'
+import { KnowledgeBaseReaderPage } from '../pages/KnowledgeBaseReader/KnowledgeBaseReader'
 
 export function AppRouter() {
   return (
@@ -21,6 +22,7 @@ export function AppRouter() {
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/knowledge-base/:slug" element={<KnowledgeBaseReaderPage />} />
         <Route path="/admin" element={<DashboardLayout role="admin" />}>
           <Route index element={<Navigate to="/admin/dashboard" replace />} />
           <Route path="dashboard" element={<DashboardPage />} />

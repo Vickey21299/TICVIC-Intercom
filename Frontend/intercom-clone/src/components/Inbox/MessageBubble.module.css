@@ -1,0 +1,44 @@
+.bubbleContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+}
+
+.agent {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.customer {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.content {
+  padding: 12px 16px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.agent .content {
+  background: #3b82f6;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.customer .content {
+  background: white;
+  color: #1f2937;
+  border: 1px solid #e5e7eb;
+  border-bottom-left-radius: 4px;
+}
+
+.meta {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: 4px;
+  display: flex;
+  gap: 8px;
+}
