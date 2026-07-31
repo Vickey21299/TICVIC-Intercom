@@ -63,7 +63,9 @@ The database schema is organized into modular paths to support rapid lookups:
 
 ### Step 1: Launch Backend Engine
 ```bash
-cd Backend
+cd Backend<img width="1600" height="881" alt="WhatsApp Image 2026-07-30 at 1 58 03 AM" src="https://github.com/user-attachments/assets/01332c39-2687-4820-96d0-4d0b61fd1fc3" />
+<img width="1600" height="875" alt="WhatsApp Image 2026-07-30 at 1 58 17 AM" src="https://github.com/user-attachments/assets/58ea5c35-9391-4eb1-943e-d61771f3d265" />
+
 python -m venv .venv
 .\.venv\Scripts\activate
 pip install -r requirements.txt
@@ -77,6 +79,9 @@ cd Frontend/intercom-clone
 npm install
 npm run dev
 ```
+<img width="1600" height="817" alt="WhatsApp Image 2026-07-30 at 2 04 49 AM" src="https://github.com/user-attachments/assets/ca9015da-ab3b-4cc3-b0dc-e520c39ed565" />
+
+
 
 ### Step 3: Launch Mock Client Site
 ```bash
