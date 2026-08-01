@@ -24,7 +24,7 @@ export function InboxLayout({ userId, userName }: Props) {
 
   const cacheKey = `ticvic_convs_${userId}_${JSON.stringify(filters)}`;
 
-  const fetchConversations = async (silent = false) => {
+  const fetchConversations = async () => {
     try {
       const res = await api.getConversations(userId, filters);
       const newConvs = res.conversations || [];
@@ -57,7 +57,7 @@ export function InboxLayout({ userId, userName }: Props) {
     } else {
       setShowListSpinner(true);
     }
-    fetchConversations(false);
+    fetchConversations();
   }, [userId, filters]);
 
   useEffect(() => {
@@ -65,7 +65,7 @@ export function InboxLayout({ userId, userName }: Props) {
   }, []);
 
   // Called by ConversationDetail after a send or action — silent, no spinner
-  const handleConversationUpdated = () => fetchConversations(true);
+  const handleConversationUpdated = () => fetchConversations();
 
   return (
     <div className={styles.container}>
