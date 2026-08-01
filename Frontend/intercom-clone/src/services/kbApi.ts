@@ -5,7 +5,7 @@ import type {
   ArticleUpdatePayload,
 } from '../types/knowledge_base';
 
-const BASE = 'http://localhost:8000/api/knowledge-base';
+const BASE = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000') + '/api/knowledge-base';
 
 export const kbApi = {
   list: async (): Promise<ArticleListResponse> => {

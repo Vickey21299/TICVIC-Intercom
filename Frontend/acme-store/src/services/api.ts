@@ -1,6 +1,6 @@
 import type { ApiMessage, Conversation } from '../types';
 
-const API_BASE = 'http://localhost:8000';
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
 
 // For testing, we use admin_acme as user_id to bypass role restrictions
 // so we can view any customer's conversations

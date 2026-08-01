@@ -103,8 +103,8 @@ export function TeamPage() {
         const agentsRes = await api.getAgents();
         const agents = agentsRes.agents;
 
-        // Admin — fetch from users node via /api/auth/me
-        const adminRes = await fetch('http://localhost:8000/api/auth/me?user_id=admin_acme');
+        const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+        const adminRes = await fetch(`${apiBase}/api/auth/me?user_id=admin_acme`);
         const adminData = await adminRes.json();
 
         // Build admin-shaped member from auth response
